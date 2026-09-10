@@ -96,8 +96,10 @@ td .ph{font-weight:600}
 td .whenc{display:block;font-size:.76rem;color:var(--muted);margin-top:2px}
 tr.sum td{background:var(--primary-soft);font-weight:700;border-bottom:0}
 tr.sum td .whenc{color:var(--muted);font-weight:400}
-.free{font-family:"Archivo",system-ui,sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);border-radius:5px;padding:2px 8px}
-.mkt-range{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2);white-space:nowrap}
+.free{font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:#dcfce7;color:#15803d;border-radius:6px;padding:3px 10px}
+@media(prefers-color-scheme:dark){.free{background:#14532d;color:#4ade80}}
+.mkt-range{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;color:#b91c1c;text-decoration:line-through;text-decoration-color:#fca5a5;white-space:nowrap;opacity:.85}
+td.c2k-price{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--primary);font-weight:700}
 
 .srcs{font-size:.71rem;color:var(--muted);margin-top:12px;line-height:1.6}
 .srcs a{color:var(--blue);text-decoration:none}
@@ -134,7 +136,6 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
 
 <div class="hero">
   <h1>One system for the entire resale operation.</h1>
-  <p class="lede">From donated device to sale to leadership dashboard — one connected system, four phases, built to stay.</p>
   <div class="stats">
     <div class="stat">
       <div class="k">Total build, all phases</div>
@@ -205,31 +206,31 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
 
 <div class="sect">Investment at a glance</div>
 <div class="tblwrap"><div class="inner"><table>
-  <tr><th>Phase</th><th class="num">Market rate</th><th class="num">C2K price</th><th class="num">Monthly care</th></tr>
+  <tr><th>Phase</th><th class="num">Market rate</th><th class="num" style="color:var(--primary)">C2K price</th><th class="num">Monthly care</th></tr>
   <tr>
     <td><span class="ph">Phase 1 &middot; Inventory System</span><span class="whenc">Start here &middot; the foundation everything else reads from</span></td>
     <td class="num"><span class="mkt-range">$35K&ndash;70K</span></td>
-    <td class="num">$15,000</td><td class="num">$500</td>
+    <td class="c2k-price">$15,000</td><td class="num">$500</td>
   </tr>
   <tr>
     <td><span class="ph">Phase 3 &middot; The C2K Store</span><span class="whenc">In parallel with Phase 1, launches at the same go-live</span></td>
     <td class="num"><span class="mkt-range">$5K&ndash;40K</span></td>
-    <td class="num">$6,000</td><td class="num">+$350</td>
+    <td class="c2k-price">$6,000</td><td class="num">+$350</td>
   </tr>
   <tr>
     <td><span class="ph">Phase 2 &middot; Listing Automation</span><span class="whenc">After Phase 1 is live and in daily use</span></td>
     <td class="num"><span class="mkt-range">$15K&ndash;30K</span></td>
-    <td class="num">$16,000</td><td class="num">+$500</td>
+    <td class="c2k-price">$16,000</td><td class="num">+$500</td>
   </tr>
   <tr>
     <td><span class="ph">Phase 4 &middot; Insight Dashboards</span><span class="whenc">Grows automatically as each phase adds its data</span></td>
     <td class="num"><span class="mkt-range">$15K&ndash;50K</span></td>
-    <td class="num"><span class="free">No build fee</span></td><td class="num"><span class="free">Included</span></td>
+    <td class="c2k-price"><span class="free">FREE</span></td><td class="num"><span class="free">FREE</span></td>
   </tr>
   <tr class="sum">
     <td>All three phases, bundled<span class="whenc">Care plans combined, versus $1,350 taken separately</span></td>
     <td class="num"><span class="mkt-range">$70K&ndash;190K</span></td>
-    <td class="num">$37,000</td><td class="num">$1,100</td>
+    <td class="c2k-price">$37,000</td><td class="num">$1,100</td>
   </tr>
 </table></div></div>
 <div class="srcs">Market ranges from published industry pricing guides: <a href="https://www.raftlabs.com/blog/inventory-management-software-cost" target="_blank" rel="noopener">RaftLabs</a> &middot; <a href="https://www.netguru.com/blog/api-integration-cost" target="_blank" rel="noopener">Netguru</a> &middot; <a href="https://elogic.co/blog/ecommerce-development-cost" target="_blank" rel="noopener">Elogic</a> &middot; <a href="https://www.abbacustechnologies.com/business-intelligence-dashboard-development-cost/" target="_blank" rel="noopener">Abbacus</a></div>
