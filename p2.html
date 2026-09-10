@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C2K Phase 2 Proposal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F4F6F3; --surface:#FFFFFF; --surface2:#EBEFEA; --ink:#182420; --muted:#5C6B64;
+  --line:#DCE3DE; --line2:#C6D0C9;
+  --primary:#0E7C66; --primary-soft:#DCEEE8; --on-primary:#FFFFFF;
+  --accent:#B96F06; --accent-soft:#F8EAD3;
+  --blue:#2F6DB5; --blue-soft:#E1EBF6;
+  --danger:#C13E32; --danger-soft:#F7E3E0;
+  --shadow:0 1px 2px rgba(20,32,27,.05),0 8px 24px rgba(20,32,27,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+    --line:#2A3630; --line2:#39463F;
+    --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+    --accent:#E9A43C; --accent-soft:#3A2F1B;
+    --blue:#6FA3DE; --blue-soft:#1F2E40;
+    --danger:#E0685C; --danger-soft:#3D2320;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+  --line:#2A3630; --line2:#39463F;
+  --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+  --accent:#E9A43C; --accent-soft:#3A2F1B;
+  --blue:#6FA3DE; --blue-soft:#1F2E40;
+  --danger:#E0685C; --danger-soft:#3D2320;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15.5px/1.62 "Public Sans",system-ui,sans-serif;padding:0 22px 60px}
+h1,h2,h3,h4{font-family:"Archivo",system-ui,sans-serif;margin:0;text-wrap:balance}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.wrap{max-width:880px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;padding:34px 0 6px}
+header .logo{width:40px;height:40px;border-radius:11px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center;font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:.84rem;flex:none}
+header h1{font-size:1.4rem;font-weight:800}
+header .sub{font-size:.8rem;color:var(--muted)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 26px}
+.meta span{font-family:"Archivo",system-ui,sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line2);border-radius:999px;padding:3px 11px;background:var(--surface);color:var(--muted)}
+.part{font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:38px 0 8px}
+.lede{color:var(--muted);margin:0 0 16px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow)}
+.card p{margin:0 0 13px;max-width:72ch}
+.card p:last-child{margin:0}
+.hero{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
+.stat{background:var(--surface2);border-radius:12px;padding:14px 16px}
+.stat .k{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:"Archivo",system-ui,sans-serif}
+.stat .v{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.45rem;margin-top:2px}
+.stat .n{font-size:.74rem;color:var(--muted)}
+@media(max-width:620px){.hero{grid-template-columns:1fr}}
+.fgroup{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px;box-shadow:var(--shadow);border-left:4px solid var(--primary)}
+.fgroup h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.fgroup ul{margin:8px 0 0;padding-left:19px}
+.fgroup li{margin:5px 0;max-width:70ch}
+.fgroup li::marker{color:var(--primary)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+.tblwrap{overflow-x:auto}
+th{font-family:"Archivo",system-ui,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line2)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{border-top:2px solid var(--line2);font-weight:700;border-bottom:0}
+.sub-td{display:block;font-size:.78rem;color:var(--muted)}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px}
+.price .hd{background:var(--primary);color:var(--on-primary);padding:14px 24px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price .hd h3{font-size:1rem;font-weight:800;flex:1}
+.price .hd .amt{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.5rem}
+.price .bd{padding:18px 24px}
+.price ul{margin:8px 0 0;padding-left:19px}
+.price li{margin:5px 0;max-width:70ch}
+.price p{margin:0 0 10px;max-width:72ch}
+.price p:last-child,.price ul:last-child{margin-bottom:0}
+.bundle{border:2px solid var(--accent);border-radius:16px;background:var(--surface);box-shadow:var(--shadow);padding:20px 24px}
+.bundle .bt{font-family:"Archivo",system-ui,sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.note{background:var(--blue-soft);border-radius:12px;padding:12px 16px;font-size:.86rem;margin-top:14px}
+.note b{color:var(--blue)}
+.srcs{font-size:.72rem;color:var(--muted);margin-top:8px}
+.srcs a{color:var(--blue);text-decoration:none}
+.srcs a:hover{text-decoration:underline}
+.footnote{color:var(--muted);font-size:.74rem;margin-top:30px;text-align:center}
+@media print{body{padding:0 6px}.card,.fgroup,.price,.bundle{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="logo">C2K</div>
+  <div><h1>Phase 2 Proposal · Listing Automation</h1><div class="sub">One-click multichannel listing with AI drafts · prepared for Cheri, Computers 2 Kids · by Hashing AI</div></div>
+</header>
+<div class="meta"><span>September 2026</span><span>Phase 2 of 4</span><span>Fixed price</span><span>Starts after Phase 1 go-live</span></div>
+
+<div class="part">Executive summary</div>
+<div class="card">
+  <p>Phase 2 turns the tracking system into an automation system. Where Phase 1 makes the manual eBay workflow safe, Phase 2 largely removes it: a tested unit's record, specs, photos, and condition disclosures become an AI-drafted listing that staff review and publish to eBay and the C2K Store in one click, and a sale anywhere automatically takes the listing down everywhere. The de-list reminder queue from Phase 1, the double-sale risk it guards against, and the copy-paste of eBay numbers all disappear.</p>
+  <p>This is the phase that changes staff economics. Listing one machine on eBay today costs 15 to 25 minutes of a staff member's attention; with drafts pre-written from data the warehouse has already captured, the same listing takes about two minutes of review. Across hundreds of units a year, Phase 2 pays for itself in staff hours alone.</p>
+  <div class="hero">
+    <div class="stat"><div class="k">One-time setup fee</div><div class="v">$16,000</div><div class="n">Community rate · standard value $24,000</div></div>
+    <div class="stat"><div class="k">Ongoing</div><div class="v">+$500<span style="font-size:.9rem;font-weight:600">/mo</span></div><div class="n">Added to the Phase 1 care plan</div></div>
+    <div class="stat"><div class="k">Timeline</div><div class="v">12 weeks</div><div class="n">Committed window · working target is week 9</div></div>
+  </div>
+</div>
+
+<div class="part">What Phase 2 delivers</div>
+
+<div class="fgroup">
+  <h3>1 · One-click publishing</h3>
+  <ul>
+    <li>From any tested unit's record, one button drafts the complete listing: title, description, and condition notes generated by AI from the specs, test checklist, and disclosures Phase 1 already captured. Staff review and edit before anything goes live; nothing publishes without a human approving it.</li>
+    <li>Publish to eBay and the C2K Store together or separately. Quantity listings for identical models are built automatically from the model group.</li>
+    <li>Bulk mode: select a batch of tested units and publish them as a queue, with progress and per-item results.</li>
+  </ul>
+</div>
+
+<div class="fgroup">
+  <h3>2 · eBay connected for real</h3>
+  <ul>
+    <li>Official eBay API integration: listings are created, updated, and ended from inside the system, with the eBay item number bound to the C2K unit automatically instead of by hand.</li>
+    <li>Sales flow back automatically: an eBay order appears in the Fulfill queue on its own, already matched to the right unit and shelf. No more pasting listing numbers.</li>
+    <li>Price and quantity edits made in the system push to eBay; no double bookkeeping.</li>
+  </ul>
+</div>
+
+<div class="fgroup">
+  <h3>3 · Cross-channel sync, the double-sale killer</h3>
+  <ul>
+    <li>When a unit sells on any channel, including in person at the warehouse, its listings on every other channel end automatically within minutes.</li>
+    <li>Quantity pools stay in sync across channels: one pool of five identical laptops shows the correct remaining count everywhere.</li>
+    <li>Every automated action is logged in the unit's timeline, so the audit trail from Phase 1 stays complete.</li>
+  </ul>
+</div>
+
+<div class="fgroup">
+  <h3>4 · Built on Phase 1, feeding Phase 4</h3>
+  <ul>
+    <li>No migration and no retraining on a new tool: Phase 2 adds buttons to screens staff already use, and the Phase 1 workflow remains available as a manual fallback.</li>
+    <li>Listing, publish, and sale events all land in the same timestamped record, which is what lets the care plan dashboard start showing channel comparisons and time-to-sale.</li>
+  </ul>
+</div>
+
+<div class="part">Timeline · 12-week committed window</div>
+<div class="card">
+  <div class="tblwrap"><table>
+    <tr><th>Weeks</th><th>Stage</th><th>What happens</th></tr>
+    <tr><td class="num">1–2</td><td><b>Connect &amp; design</b></td><td>eBay developer account and API approval, channel mapping, AI draft templates tuned on C2K's real past listings.</td></tr>
+    <tr><td class="num">3–8</td><td><b>Build</b></td><td>eBay integration first, then AI drafting and review UI, then cross-channel sync and bulk publishing.</td></tr>
+    <tr><td class="num">9–10</td><td><b>Pilot</b></td><td>Automation runs alongside the manual workflow on a subset of inventory; results compared listing by listing.</td></tr>
+    <tr><td class="num">11–12</td><td><b>Cutover</b></td><td>Full switch to automated publishing, training, manual workflow kept as fallback.</td></tr>
+  </table></div>
+  <div class="note"><b>Our working target is faster:</b> around week 9 for cutover. The margin covers eBay's developer approval lead time, which is outside our control, and pilot feedback rounds. Phase 2 starts after Phase 1 is live, since the automation publishes from Phase 1's records.</div>
+</div>
+
+<div class="part">Effort estimate</div>
+<div class="card">
+  <div class="tblwrap"><table>
+    <tr><th>Workstream</th><th class="num">Hours</th></tr>
+    <tr><td>eBay API integration<span class="sub-td">Auth, listing create/update/end, order webhooks, error handling</span></td><td class="num">90</td></tr>
+    <tr><td>Cross-channel sync engine<span class="sub-td">Sale detection, automatic de-listing, quantity pool sync, audit logging</span></td><td class="num">60</td></tr>
+    <tr><td>AI listing drafts<span class="sub-td">Draft generation from specs and disclosures, review and edit UI</span></td><td class="num">60</td></tr>
+    <tr><td>Bulk publishing queue &amp; channel dashboard</td><td class="num">40</td></tr>
+    <tr><td>Automated order ingestion into Fulfill</td><td class="num">40</td></tr>
+    <tr><td>Pilot support, QA &amp; fixes</td><td class="num">20</td></tr>
+    <tr><td>Training, documentation &amp; cutover</td><td class="num">10</td></tr>
+    <tr class="total"><td>Total</td><td class="num">320</td></tr>
+  </table></div>
+  <div class="note"><b>Market context:</b> a single marketplace or e-commerce API integration is typically quoted at $15,000 to $30,000 on its own, before any AI features, and AI-powered listing tooling is priced well above that in current industry guides. Phase 2 delivers the integration, the sync engine, and the AI drafting together at the low end of what the integration alone usually costs.
+  <div class="srcs">Sources: <a href="https://www.netguru.com/blog/api-integration-cost" target="_blank" rel="noopener">Netguru, API integration costs (e-commerce integrations $15k–30k)</a> · <a href="https://www.raftlabs.com/blog/inventory-management-software-cost" target="_blank" rel="noopener">RaftLabs, inventory software features (REST API integration $15k–30k, AI features $40k+)</a></div></div>
+</div>
+
+<div class="part">Investment</div>
+<div class="price">
+  <div class="hd"><h3>Phase 2 setup fee · one-time</h3><div class="amt">$16,000</div></div>
+  <div class="bd">
+    <p>At the same low-end agency rate as Phase 1, the 320 hours above come to $24,000. The community partner rate continues from Phase 1.</p>
+    <div class="tblwrap"><table>
+      <tr><td>Standard engagement price<span class="sub-td">320 hours × $75/hour blended</span></td><td class="num">$24,000</td></tr>
+      <tr><td>Partnership &amp; nonprofit discount</td><td class="num" style="color:var(--primary)">&minus; $8,000</td></tr>
+      <tr class="total"><td>Phase 2 price for C2K</td><td class="num">$16,000</td></tr>
+    </table></div>
+    <p style="margin-top:12px">Fixed price, same terms as Phase 1: no hourly billing, no overage surprises.</p>
+    <ul>
+      <li><b>$6,400</b> on signature (40%)</li>
+      <li><b>$6,400</b> at pilot delivery (40%)</li>
+      <li><b>$3,200</b> at cutover acceptance (20%)</li>
+    </ul>
+  </div>
+</div>
+<div class="price">
+  <div class="hd"><h3>Care &amp; hosting · monthly</h3><div class="amt">+$500<span style="font-size:.95rem;font-weight:600">/mo</span></div></div>
+  <div class="bd">
+    <p>Added to the Phase 1 care plan from cutover. Covers what automation needs to stay healthy:</p>
+    <ul>
+      <li>eBay API monitoring, token renewals, and adaptation when eBay changes its API</li>
+      <li>Sync error watching and resolution, so a failed de-list never becomes a double sale</li>
+      <li>AI usage costs for listing drafts included at normal volume</li>
+      <li>Dashboard grows with channel data: time-to-sale and channel comparison views</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bundle">
+  <div class="bt">Full roadmap bundle</div>
+  <p style="margin:0;max-width:72ch">If C2K moves forward with all three phases, the combined care plan is <b>$1,100/month</b> instead of $1,350 when taken separately, and it includes the <b>complete Phase 4 executive analytics suite</b> as it comes online: turn rates, aging alerts, channel profitability, and the leadership views from the Phase 4 demo, at no separate build fee. The full analytics are exclusive to the bundle. <a href="p4.html">See the tier-by-tier dashboard details</a>.</p>
+</div>
+
+<div class="part">Assumptions &amp; dependencies</div>
+<div class="card">
+  <p><b>We assume:</b> Phase 1 is live and in daily use; C2K's eBay seller account is in good standing and C2K authorizes API access; eBay's developer approval process cooperates (its lead time is built into the 12-week window); AI drafts are always reviewed by staff before publishing, which keeps C2K in control of what buyers see.</p>
+  <p><b>Not included:</b> additional marketplaces beyond eBay and the C2K Store (each can be scoped later as a small add-on), and paid eBay fees or promoted listings, which remain C2K's own seller costs.</p>
+</div>
+
+<p class="footnote">Prepared by Bill &amp; Wally · Hashing AI · September 2026 · Companion documents: Phase 1 proposal, Phase 3 proposal, live demos, and the four-phase roadmap.</p>
+</div>
+
+</body>
+</html>

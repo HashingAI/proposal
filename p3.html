@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C2K Phase 3 Proposal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F4F6F3; --surface:#FFFFFF; --surface2:#EBEFEA; --ink:#182420; --muted:#5C6B64;
+  --line:#DCE3DE; --line2:#C6D0C9;
+  --primary:#0E7C66; --primary-soft:#DCEEE8; --on-primary:#FFFFFF;
+  --accent:#B96F06; --accent-soft:#F8EAD3;
+  --blue:#2F6DB5; --blue-soft:#E1EBF6;
+  --danger:#C13E32; --danger-soft:#F7E3E0;
+  --shadow:0 1px 2px rgba(20,32,27,.05),0 8px 24px rgba(20,32,27,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+    --line:#2A3630; --line2:#39463F;
+    --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+    --accent:#E9A43C; --accent-soft:#3A2F1B;
+    --blue:#6FA3DE; --blue-soft:#1F2E40;
+    --danger:#E0685C; --danger-soft:#3D2320;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+  --line:#2A3630; --line2:#39463F;
+  --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+  --accent:#E9A43C; --accent-soft:#3A2F1B;
+  --blue:#6FA3DE; --blue-soft:#1F2E40;
+  --danger:#E0685C; --danger-soft:#3D2320;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15.5px/1.62 "Public Sans",system-ui,sans-serif;padding:0 22px 60px}
+h1,h2,h3,h4{font-family:"Archivo",system-ui,sans-serif;margin:0;text-wrap:balance}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.wrap{max-width:880px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;padding:34px 0 6px}
+header .logo{width:40px;height:40px;border-radius:11px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center;font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:.84rem;flex:none}
+header h1{font-size:1.4rem;font-weight:800}
+header .sub{font-size:.8rem;color:var(--muted)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 26px}
+.meta span{font-family:"Archivo",system-ui,sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line2);border-radius:999px;padding:3px 11px;background:var(--surface);color:var(--muted)}
+.part{font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:38px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow)}
+.card p{margin:0 0 13px;max-width:72ch}
+.card p:last-child{margin:0}
+.hero{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
+.stat{background:var(--surface2);border-radius:12px;padding:14px 16px}
+.stat .k{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:"Archivo",system-ui,sans-serif}
+.stat .v{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.45rem;margin-top:2px}
+.stat .n{font-size:.74rem;color:var(--muted)}
+@media(max-width:620px){.hero{grid-template-columns:1fr}}
+.fgroup{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px;box-shadow:var(--shadow);border-left:4px solid var(--primary)}
+.fgroup h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.fgroup ul{margin:8px 0 0;padding-left:19px}
+.fgroup li{margin:5px 0;max-width:70ch}
+.fgroup li::marker{color:var(--primary)}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px}
+.price .hd{background:var(--primary);color:var(--on-primary);padding:14px 24px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price .hd h3{font-size:1rem;font-weight:800;flex:1}
+.price .hd .amt{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.5rem}
+.price .bd{padding:18px 24px}
+.price ul{margin:8px 0 0;padding-left:19px}
+.price li{margin:5px 0;max-width:70ch}
+.price p{margin:0 0 10px;max-width:72ch}
+.price p:last-child,.price ul:last-child{margin-bottom:0}
+.bundle{border:2px solid var(--accent);border-radius:16px;background:var(--surface);box-shadow:var(--shadow);padding:20px 24px}
+.bundle .bt{font-family:"Archivo",system-ui,sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.srcs{font-size:.72rem;color:var(--muted);margin-top:8px}
+.srcs a{color:var(--blue);text-decoration:none}
+.srcs a:hover{text-decoration:underline}
+.footnote{color:var(--muted);font-size:.74rem;margin-top:30px;text-align:center}
+@media print{body{padding:0 6px}.card,.fgroup,.price,.bundle{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="logo">C2K</div>
+  <div><h1>Phase 3 Proposal · The C2K Store</h1><div class="sub">C2K's own online storefront · prepared for Cheri, Computers 2 Kids · by Hashing AI</div></div>
+</header>
+<div class="meta"><span>September 2026</span><span>Phase 3 of 4</span><span>All-inclusive package</span><span>Built in parallel with Phase 1</span></div>
+
+<div class="part">Executive summary</div>
+<div class="card">
+  <p>Phase 3 gives C2K what eBay can never give it: a store of its own. Every sale on eBay hands roughly 13 to 15 percent of the price to eBay in final value fees, on top of presenting C2K as just another seller in a crowded marketplace. The C2K Store is a branded storefront on C2K's own domain where the full price of every sale funds the mission, the story ("Your Purchase Powers Digital Equity") is front and center, and the customer relationship belongs to C2K.</p>
+  <p>Because the store's catalog comes straight from the Phase 1 inventory system, it can be built in parallel with Phase 1 and launch alongside it. A working preview is already live for you to click through today.</p>
+  <div class="hero">
+    <div class="stat"><div class="k">All-inclusive package</div><div class="v">$6,000</div><div class="n">One price · everything listed below</div></div>
+    <div class="stat"><div class="k">Ongoing</div><div class="v">+$350<span style="font-size:.9rem;font-weight:600">/mo</span></div><div class="n">Store care, added to the Phase 1 plan</div></div>
+    <div class="stat"><div class="k">Timeline</div><div class="v">In parallel</div><div class="n">Launches with Phase 1 go-live · same 12-week window</div></div>
+  </div>
+</div>
+
+<div class="part">Everything the package includes</div>
+
+<div class="fgroup">
+  <h3>1 · The storefront</h3>
+  <ul>
+    <li>A custom store on C2K's own domain, designed around C2K's brand and mission, with the digital-equity story woven into the shopping experience rather than bolted on.</li>
+    <li>Mobile-first product pages showing the specs, photos, battery health, and honest condition disclosures captured during Phase 1 testing. The transparency that makes C2K trustworthy on eBay becomes the store's signature.</li>
+    <li>Category browsing, search, and filtering across laptops, desktops, Apple, monitors, and accessories.</li>
+  </ul>
+</div>
+
+<div class="fgroup">
+  <h3>2 · Checkout &amp; payments</h3>
+  <ul>
+    <li>Secure Stripe checkout: cards, Apple Pay, and Google Pay, with automatic receipts. Standard card processing fees (roughly 3 percent) are the only per-sale cost, versus roughly 13 to 15 percent on eBay.</li>
+    <li>Shipping and local pickup options at checkout, configured for how C2K actually fulfills.</li>
+    <li>Sales tax handled through Stripe's tax tooling.</li>
+  </ul>
+</div>
+
+<div class="fgroup">
+  <h3>3 · Run from the system staff already use</h3>
+  <ul>
+    <li>Publishing to the store is a toggle on the Phase 1 item record: no separate store admin to learn, no product data entered twice, ever.</li>
+    <li>Store orders drop into the same Fulfill queue as eBay sales, with the same scan-confirmed take-down, so warehouse practice does not change at all.</li>
+    <li>When a unit sells anywhere, it leaves the store; full automatic cross-channel sync arrives with Phase 2.</li>
+  </ul>
+</div>
+
+<div class="fgroup">
+  <h3>4 · Launch &amp; growth foundations</h3>
+  <ul>
+    <li>Domain setup, SSL, search-engine basics, and social sharing previews, so listings look right when shared on Facebook or in a newsletter.</li>
+    <li>Traffic and sales analytics wired in from day one, feeding the same record that powers the care plan dashboard.</li>
+    <li>Staff training and a written guide at launch.</li>
+  </ul>
+</div>
+
+<div class="card" style="border-left:4px solid var(--accent)">
+  <p><b>The math that matters:</b> at eBay's roughly 13 to 15 percent final value fees, about every $40,000 to $46,000 of sales moved from eBay to the C2K Store pays for this entire build. Everything after that is margin recovered for the mission, year after year. A working preview of the store is already live at <span class="mono">store.hashingai.dev/c2k</span>.</p>
+</div>
+
+<div class="part">Timeline · in parallel with Phase 1</div>
+<div class="card">
+  <p>The store is built alongside Phase 1 inside the same 12-week committed window, by splitting the work between the two of us, and launches together with the Phase 1 go-live. This is exactly the sequencing from the roadmap: Phase 1 and Phase 3 in parallel first, so Phase 2's automation can then connect all channels at once. The only external lead times are C2K's domain choice and Stripe account approval, both of which start in week 1.</p>
+</div>
+
+<div class="part">Investment</div>
+<div class="price">
+  <div class="hd"><h3>Phase 3 package · one-time</h3><div class="amt">$6,000</div></div>
+  <div class="bd">
+    <p>One all-inclusive price for everything listed above: storefront, checkout, catalog sync, order flow, launch setup, and training. Custom-built stores for small businesses are commonly quoted at $5,000 to $40,000, with template-based builds at the bottom of that range and custom work in the upper half. The C2K Store is fully custom, priced near the bottom, because the hard part, the product catalog and its data, already exists in Phase 1 and we build both together.</p>
+    <ul>
+      <li><b>$3,000</b> on signature (50%)</li>
+      <li><b>$3,000</b> at store launch (50%)</li>
+    </ul>
+    <div class="srcs">Sources: <a href="https://elogic.co/blog/ecommerce-development-cost" target="_blank" rel="noopener">Elogic, ecommerce development costs (SMB builds $5k–40k)</a> · <a href="https://statrys.com/blog/ecommerce-website-cost" target="_blank" rel="noopener">Statrys, ecommerce website costs (custom builds, $200–700/mo ongoing)</a></div>
+  </div>
+</div>
+<div class="price">
+  <div class="hd"><h3>Store care · monthly</h3><div class="amt">+$350<span style="font-size:.95rem;font-weight:600">/mo</span></div></div>
+  <div class="bd">
+    <p>Added to the Phase 1 care plan from launch. Market rate for e-commerce maintenance runs $200 to $700 per month before counting a payment stack.</p>
+    <ul>
+      <li>Store hosting, SSL, uptime monitoring, and backups</li>
+      <li>Stripe and checkout kept healthy and current, including tax tooling updates</li>
+      <li>Security patching for the public-facing storefront</li>
+      <li>Small content and layout adjustments (banners, featured items, seasonal touches)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bundle">
+  <div class="bt">Full roadmap bundle</div>
+  <p style="margin:0;max-width:72ch">If C2K moves forward with all three phases, the combined care plan is <b>$1,100/month</b> instead of $1,350 when taken separately, and it includes the <b>complete Phase 4 executive analytics suite</b> as it comes online: turn rates, aging alerts, channel profitability, and the leadership views from the Phase 4 demo, at no separate build fee. The full analytics are exclusive to the bundle. <a href="p4.html">See the tier-by-tier dashboard details</a>.</p>
+</div>
+
+<div class="part">Assumptions &amp; dependencies</div>
+<div class="card">
+  <p><b>We assume:</b> Phase 1 proceeds (the store publishes from its catalog); C2K registers or designates a domain and opens a Stripe account in week 1, with our help; product photos come from the Phase 1 intake flow; and C2K's team handles order fulfillment as it does for eBay today.</p>
+  <p><b>Not included:</b> paid marketing and ad campaigns, professional product photography, and Stripe's standard processing fees on each sale, which go to Stripe, not to us.</p>
+</div>
+
+<p class="footnote">Prepared by Bill &amp; Wally · Hashing AI · September 2026 · Companion documents: Phase 1 proposal, Phase 2 proposal, the live store preview, and the four-phase roadmap.</p>
+</div>
+
+</body>
+</html>

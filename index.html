@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C2K Resale Technology Program</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F4F6F3; --surface:#FFFFFF; --surface2:#EBEFEA; --ink:#182420; --muted:#5C6B64;
+  --line:#DCE3DE; --line2:#C6D0C9;
+  --primary:#0E7C66; --primary-soft:#DCEEE8; --on-primary:#FFFFFF;
+  --accent:#B96F06; --accent-soft:#F8EAD3;
+  --blue:#2F6DB5; --blue-soft:#E1EBF6;
+  --violet:#7C5CB0; --violet-soft:#ECE5F6;
+  --shadow:0 1px 2px rgba(20,32,27,.05),0 8px 24px rgba(20,32,27,.07);
+  --shadow-lg:0 2px 4px rgba(20,32,27,.06),0 16px 40px rgba(20,32,27,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+    --line:#2A3630; --line2:#39463F;
+    --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+    --accent:#E9A43C; --accent-soft:#3A2F1B;
+    --blue:#6FA3DE; --blue-soft:#1F2E40;
+    --violet:#A98BD8; --violet-soft:#2E2540;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+    --shadow-lg:0 2px 4px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+  --line:#2A3630; --line2:#39463F;
+  --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+  --accent:#E9A43C; --accent-soft:#3A2F1B;
+  --blue:#6FA3DE; --blue-soft:#1F2E40;
+  --violet:#A98BD8; --violet-soft:#2E2540;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+  --shadow-lg:0 2px 4px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15.5px/1.62 "Public Sans",system-ui,sans-serif;padding:0 22px 70px}
+h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;margin:0;text-wrap:balance}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.wrap{max-width:940px;margin:0 auto}
+
+header{display:flex;align-items:center;gap:18px;padding:32px 0 0;flex-wrap:wrap}
+header .logo{width:164px;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 12px;flex:none;display:block}
+header .org{font-family:"Archivo",system-ui,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink);border-left:1px solid var(--line2);padding-left:16px;line-height:1.5}
+header .org span{display:block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:none;color:var(--muted);margin-top:2px}
+@media(max-width:520px){header .org{border-left:0;padding-left:0}}
+
+.hero{padding:30px 0 4px}
+.hero h1{font-size:2.35rem;font-weight:800;line-height:1.12;max-width:17ch}
+@media(max-width:620px){.hero h1{font-size:1.85rem}}
+.hero .lede{color:var(--muted);font-size:1.02rem;max-width:66ch;margin:14px 0 0}
+.hero .lede b{color:var(--ink);font-weight:600}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 0}
+@media(max-width:760px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .k{font-family:"Archivo",system-ui,sans-serif;font-size:.64rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-weight:700;font-size:2rem;line-height:1.15;margin-top:4px;letter-spacing:-.01em}
+.stat .v small{font-size:.95rem;font-weight:600;color:var(--muted)}
+.stat .n{font-size:.78rem;color:var(--muted);margin-top:3px}
+
+.sect{font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:52px 0 10px}
+.sect-lede{color:var(--muted);max-width:68ch;margin:0 0 18px}
+
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:860px){.pillars{grid-template-columns:repeat(2,1fr)}}
+.pil{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--pc);border-radius:13px;padding:15px 16px;box-shadow:var(--shadow)}
+.pil b{font-family:"Archivo",system-ui,sans-serif;font-size:.9rem;display:block;margin-bottom:4px}
+.pil span{font-size:.8rem;color:var(--muted);line-height:1.5;display:block}
+.plus{text-align:center;font-family:"Archivo",system-ui,sans-serif;color:var(--muted);font-size:.78rem;letter-spacing:.06em;margin:14px 0 0}
+
+.goals{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.goals{grid-template-columns:1fr}}
+.goal{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:17px 20px;box-shadow:var(--shadow);display:flex;gap:13px}
+.goal .ic{width:32px;height:32px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--gs);color:var(--gc)}
+.goal .ic svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.goal b{font-family:"Archivo",system-ui,sans-serif;font-size:.94rem;display:block;margin-bottom:3px}
+.goal p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.55}
+
+.flow{display:grid;grid-template-columns:1.4fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+@media(max-width:860px){.flow{grid-template-columns:1fr}.flow .arw{display:none}}
+.fbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+.fbox .when{font-family:"Archivo",system-ui,sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--fc);margin-bottom:5px}
+.fbox b{font-family:"Archivo",system-ui,sans-serif;font-size:.88rem;display:block}
+.fbox span{font-size:.78rem;color:var(--muted);display:block;margin-top:3px;line-height:1.5}
+.arw{display:flex;align-items:center;justify-content:center;color:var(--line2);font-size:1.1rem}
+
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+.tblwrap{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.tblwrap .inner{overflow-x:auto}
+th{font-family:"Archivo",system-ui,sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--surface2);white-space:nowrap}
+td{padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+th.num{font-family:"Archivo",system-ui,sans-serif}
+td .ph{font-weight:600}
+td .whenc{display:block;font-size:.76rem;color:var(--muted);margin-top:2px}
+tr.sum td{background:var(--primary-soft);font-weight:700;border-bottom:0}
+tr.sum td .whenc{color:var(--muted);font-weight:400}
+.free{font-family:"Archivo",system-ui,sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);border-radius:5px;padding:2px 8px}
+
+.mkt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:760px){.mkt{grid-template-columns:1fr}}
+.mktcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
+.mktcard.hl{border:2px solid var(--primary)}
+.mktcard h3{font-size:.8rem;font-family:"Archivo",system-ui,sans-serif;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.mktcard.hl h3{color:var(--primary)}
+.mrow{display:flex;justify-content:space-between;gap:14px;font-size:.85rem;padding:5px 0;color:var(--muted)}
+.mrow span:last-child{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--ink);white-space:nowrap}
+.mtot{display:flex;justify-content:space-between;gap:14px;align-items:baseline;border-top:1px solid var(--line);margin-top:9px;padding-top:11px}
+.mtot b{font-family:"Archivo",system-ui,sans-serif;font-size:.88rem}
+.mtot .big{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.32rem}
+.mktcard.hl .mtot .big{color:var(--primary)}
+.srcs{font-size:.71rem;color:var(--muted);margin-top:12px;line-height:1.6}
+.srcs a{color:var(--blue);text-decoration:none}
+.srcs a:hover{text-decoration:underline}
+
+.phases{display:grid;gap:12px}
+a.pcard{display:block;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--pc);border-radius:16px;padding:20px 24px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:box-shadow .16s,transform .16s}
+a.pcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
+.ptop{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pnum{font-family:"Archivo",system-ui,sans-serif;font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pc)}
+.ptop h3{font-size:1.12rem;font-weight:800;flex:1;min-width:190px}
+.pprice{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.1rem;white-space:nowrap}
+.pprice small{font-family:"Public Sans",system-ui,sans-serif;font-size:.76rem;font-weight:500;color:var(--muted);display:block;text-align:right;margin-top:1px}
+.pcard p{margin:8px 0 0;color:var(--muted);font-size:.9rem;max-width:74ch}
+.ptags{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}
+.ptags span{font-size:.75rem;color:var(--muted);background:var(--surface2);border-radius:7px;padding:3px 10px}
+.more{font-family:"Archivo",system-ui,sans-serif;font-size:.79rem;font-weight:700;color:var(--pc);margin-top:12px;display:inline-block}
+
+.close{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);margin-top:14px}
+.close p{margin:0 0 11px;max-width:72ch}
+.close p:last-child{margin:0}
+.footnote{color:var(--muted);font-size:.75rem;margin-top:34px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <img class="logo" src="c2k-logo.webp" alt="Computers 2 Kids" width="320" height="161">
+  <div class="org">Resale Technology Program<span>Proposal prepared by Hashing AI</span></div>
+</header>
+
+<div class="hero">
+  <h1>One system for the entire resale operation.</h1>
+  <p class="lede">From the moment a donated device arrives to the moment leadership reads the numbers: <b>inventory control, AI listing automation, C2K's own storefront, and executive analytics</b>, built as one connected system over four phases.</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="k">Total build, all phases</div>
+      <div class="v">$37,000</div>
+      <div class="n">Market-rate equivalent: $70K to $190K</div>
+    </div>
+    <div class="stat">
+      <div class="k">All-in monthly care</div>
+      <div class="v">$1,100<small>/mo</small></div>
+      <div class="n">Bundled, and the analytics suite is included</div>
+    </div>
+    <div class="stat">
+      <div class="k">First systems live</div>
+      <div class="v">12 weeks</div>
+      <div class="n">Phases 1 and 3 launch together</div>
+    </div>
+  </div>
+</div>
+
+<div class="sect">What C2K ends up owning</div>
+<p class="sect-lede">Four capabilities that most organizations buy as four separate products from four separate vendors, built here as one system on one record per device.</p>
+<div class="pillars">
+  <div class="pil" style="--pc:var(--primary)"><b>Inventory control</b><span>Every unit tracked by ID, barcode, shelf, and test result, from intake to shipment.</span></div>
+  <div class="pil" style="--pc:var(--blue)"><b>AI automation</b><span>Listings drafted from data staff already captured, published everywhere in one click.</span></div>
+  <div class="pil" style="--pc:var(--accent)"><b>Own storefront</b><span>A branded C2K store where the full sale price funds the mission, not marketplace fees.</span></div>
+  <div class="pil" style="--pc:var(--violet)"><b>Business analytics</b><span>Turn rate, aging, and channel profitability, computed from the same records automatically.</span></div>
+</div>
+<p class="plus">All four running on one shared record per device. Nothing entered twice, ever.</p>
+
+<div class="sect">What it is meant to change</div>
+<p class="sect-lede">The system exists to serve four operating goals. Each phase is sequenced to move these in the right direction, and Phase 4 exists so C2K can actually see whether they moved.</p>
+<div class="goals">
+  <div class="goal" style="--gs:var(--primary-soft);--gc:var(--primary)">
+    <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+    <div><b>A standard workflow, every time</b><p>Intake, test, shelve, list, sell, ship: the same steps in the same order for staff and volunteers alike, with required fields so no unit slips through half-finished.</p></div>
+  </div>
+  <div class="goal" style="--gs:var(--blue-soft);--gc:var(--blue)">
+    <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
+    <div><b>Nothing lost, nothing sold twice</b><p>Every device has one permanent record and one known shelf. Scan-verified picking is designed to end wrong-unit shipments, and cross-channel sync closes the double-sale gap.</p></div>
+  </div>
+  <div class="goal" style="--gs:var(--accent-soft);--gc:var(--accent)">
+    <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 18L10 11l4 4 6-8"/><path d="M14 7h6v6"/></svg></div>
+    <div><b>Faster turnover</b><p>Items that are findable and quick to list reach the market while they still hold value. Cutting the days between intake and listing is the single biggest lever on turn rate.</p></div>
+  </div>
+  <div class="goal" style="--gs:var(--violet-soft);--gc:var(--violet)">
+    <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+    <div><b>More revenue per staff hour</b><p>The same three-person team handling more units, on more channels, with a commission-free store keeping more of every sale for the mission.</p></div>
+  </div>
+</div>
+
+<div class="sect">The build sequence</div>
+<div class="flow">
+  <div class="fbox" style="--fc:var(--primary)">
+    <div class="when">Weeks 1 to 12 &middot; together</div>
+    <b>Phase 1 + Phase 3</b>
+    <span>The tracking system and the C2K Store launch side by side, because the store sells from the same catalog.</span>
+  </div>
+  <div class="arw">&rarr;</div>
+  <div class="fbox" style="--fc:var(--blue)">
+    <div class="when">Next</div>
+    <b>Phase 2</b>
+    <span>Automation connects every channel at once, now that there is more than one channel to connect.</span>
+  </div>
+  <div class="arw">&rarr;</div>
+  <div class="fbox" style="--fc:var(--violet)">
+    <div class="when">Throughout</div>
+    <b>Phase 4</b>
+    <span>Dashboards grow with each phase, reaching the full executive suite once all three are live.</span>
+  </div>
+</div>
+
+<div class="sect">Investment at a glance</div>
+<div class="tblwrap"><div class="inner"><table>
+  <tr><th>Phase</th><th class="num">One-time</th><th class="num">Monthly care</th></tr>
+  <tr>
+    <td><span class="ph">Phase 1 &middot; Inventory System</span><span class="whenc">Start here &middot; the foundation everything else reads from</span></td>
+    <td class="num">$15,000</td><td class="num">$500</td>
+  </tr>
+  <tr>
+    <td><span class="ph">Phase 3 &middot; The C2K Store</span><span class="whenc">In parallel with Phase 1, launches at the same go-live</span></td>
+    <td class="num">$6,000</td><td class="num">+$350</td>
+  </tr>
+  <tr>
+    <td><span class="ph">Phase 2 &middot; Listing Automation</span><span class="whenc">After Phase 1 is live and in daily use</span></td>
+    <td class="num">$16,000</td><td class="num">+$500</td>
+  </tr>
+  <tr>
+    <td><span class="ph">Phase 4 &middot; Insight Dashboards</span><span class="whenc">Grows automatically as each phase adds its data</span></td>
+    <td class="num"><span class="free">No build fee</span></td><td class="num"><span class="free">Included</span></td>
+  </tr>
+  <tr class="sum">
+    <td>All three phases, bundled<span class="whenc">Care plans combined, versus $1,350 taken separately</span></td>
+    <td class="num">$37,000</td><td class="num">$1,100</td>
+  </tr>
+</table></div></div>
+
+<div class="mkt">
+  <div class="mktcard">
+    <h3>Bought separately at market rates</h3>
+    <div class="mrow"><span>Custom inventory system</span><span>$35K &ndash; 70K</span></div>
+    <div class="mrow"><span>Marketplace integration &amp; automation</span><span>$15K &ndash; 30K</span></div>
+    <div class="mrow"><span>Custom storefront</span><span>$5K &ndash; 40K</span></div>
+    <div class="mrow"><span>Executive analytics layer</span><span>$15K &ndash; 50K</span></div>
+    <div class="mtot"><b>Typical market total</b><span class="big">$70K &ndash; 190K</span></div>
+  </div>
+  <div class="mktcard hl">
+    <h3>C2K community partner price</h3>
+    <div class="mrow"><span>Phase 1 &middot; Inventory System</span><span>$15,000</span></div>
+    <div class="mrow"><span>Phase 2 &middot; Listing Automation</span><span>$16,000</span></div>
+    <div class="mrow"><span>Phase 3 &middot; The C2K Store</span><span>$6,000</span></div>
+    <div class="mrow"><span>Phase 4 &middot; Analytics suite</span><span>Included</span></div>
+    <div class="mtot"><b>All four phases</b><span class="big">$37,000</span></div>
+  </div>
+</div>
+<div class="srcs">Market ranges from published industry pricing guides: <a href="https://www.raftlabs.com/blog/inventory-management-software-cost" target="_blank" rel="noopener">RaftLabs, inventory software</a> &middot; <a href="https://www.netguru.com/blog/api-integration-cost" target="_blank" rel="noopener">Netguru, API integration</a> &middot; <a href="https://elogic.co/blog/ecommerce-development-cost" target="_blank" rel="noopener">Elogic, ecommerce builds</a> &middot; <a href="https://www.abbacustechnologies.com/business-intelligence-dashboard-development-cost/" target="_blank" rel="noopener">Abbacus, BI dashboards</a>. Each phase proposal shows its own hour-by-hour estimate and the rate it is priced at.</div>
+
+<div class="sect">The four phases in detail</div>
+<p class="sect-lede">Each proposal below is a complete document: scope, timeline, hour estimates, market context, and terms. Open any one to read it in full.</p>
+
+<div class="phases">
+  <a class="pcard" style="--pc:var(--primary)" href="https://c2k-p1.vercel.app">
+    <div class="ptop">
+      <span class="pnum">Phase 1</span>
+      <h3>Inventory System</h3>
+      <div class="pprice">$15,000<small>+ $500/mo</small></div>
+    </div>
+    <p>Every device gets a permanent ID and barcode at intake. Category-driven testing with required specs and tester initials, scan-first shelving, and an eBay workflow wrapped in safeguards that make today's manual process safe.</p>
+    <div class="ptags"><span>Intake &amp; labels</span><span>Testing templates</span><span>Volunteer mode</span><span>Shelf barcodes</span><span>Safe eBay flow</span></div>
+    <span class="more">Read the full proposal &rarr;</span>
+  </a>
+
+  <a class="pcard" style="--pc:var(--blue)" href="https://c2k-p2.vercel.app">
+    <div class="ptop">
+      <span class="pnum">Phase 2</span>
+      <h3>Listing Automation</h3>
+      <div class="pprice">$16,000<small>+ $500/mo</small></div>
+    </div>
+    <p>AI drafts the listing from specs and disclosures the warehouse already captured, staff review it, and one click publishes to eBay and the store. A sale anywhere ends the listing everywhere, automatically.</p>
+    <div class="ptags"><span>eBay API</span><span>AI drafting</span><span>One-click publish</span><span>Cross-channel sync</span><span>Bulk mode</span></div>
+    <span class="more">Read the full proposal &rarr;</span>
+  </a>
+
+  <a class="pcard" style="--pc:var(--accent)" href="https://c2k-p3.vercel.app">
+    <div class="ptop">
+      <span class="pnum">Phase 3</span>
+      <h3>The C2K Store</h3>
+      <div class="pprice">$6,000<small>+ $350/mo</small></div>
+    </div>
+    <p>A branded storefront on C2K's own domain, with Stripe checkout and roughly 3 percent in card fees instead of 13 to 15 percent to eBay. The catalog comes straight from Phase 1, so nothing is entered twice.</p>
+    <div class="ptags"><span>Own domain</span><span>Stripe checkout</span><span>Catalog sync</span><span>Same Fulfill queue</span><span>Live preview ready</span></div>
+    <span class="more">Read the full proposal &rarr;</span>
+  </a>
+
+  <a class="pcard" style="--pc:var(--violet)" href="p4.html">
+    <div class="ptop">
+      <span class="pnum">Phase 4</span>
+      <h3>Insight Dashboards</h3>
+      <div class="pprice">Included<small>with the care plan</small></div>
+    </div>
+    <p>Never billed as a build. The dashboard starts the day Phase 1 goes live and grows with every phase, reaching turn rate, aging alerts, and channel profitability once all three phases are connected.</p>
+    <div class="ptags"><span>No build fee</span><span>Four unlock tiers</span><span>Turn rate</span><span>Aging alerts</span><span>Live demo inside</span></div>
+    <span class="more">See what each tier unlocks &rarr;</span>
+  </a>
+</div>
+
+<div class="sect">Where to start</div>
+<div class="close">
+  <p><b>Phase 1 is the decision that matters now.</b> It is the foundation the other three read from, and it is the only phase where waiting has a cost: dashboards, automation, and the store can all be added later, but the history they analyze can only be captured from the day tracking begins. Data not recorded in Phase 1 cannot be reconstructed.</p>
+  <p>Phase 3 is worth deciding at the same time, since building it alongside Phase 1 is what makes the $6,000 price possible and lets both launch together. Phases 2 and 4 can wait for their moment without losing anything.</p>
+</div>
+
+<p class="footnote">Prepared for Cheri, Computers 2 Kids &middot; by Bill &amp; Wally, Hashing AI &middot; September 2026 &middot; Pricing held for 60 days from issue.</p>
+
+</div>
+</body>
+</html>

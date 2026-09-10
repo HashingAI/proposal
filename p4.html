@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C2K Phase 4 · Included</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F4F6F3; --surface:#FFFFFF; --surface2:#EBEFEA; --ink:#182420; --muted:#5C6B64;
+  --line:#DCE3DE; --line2:#C6D0C9;
+  --primary:#0E7C66; --primary-soft:#DCEEE8; --on-primary:#FFFFFF;
+  --accent:#B96F06; --accent-soft:#F8EAD3;
+  --blue:#2F6DB5; --blue-soft:#E1EBF6;
+  --violet:#7C5CB0; --violet-soft:#ECE5F6;
+  --shadow:0 1px 2px rgba(20,32,27,.05),0 8px 24px rgba(20,32,27,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+    --line:#2A3630; --line2:#39463F;
+    --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+    --accent:#E9A43C; --accent-soft:#3A2F1B;
+    --blue:#6FA3DE; --blue-soft:#1F2E40;
+    --violet:#A98BD8; --violet-soft:#2E2540;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101714; --surface:#1A231F; --surface2:#222D28; --ink:#E8EFEA; --muted:#94A49C;
+  --line:#2A3630; --line2:#39463F;
+  --primary:#35AB8F; --primary-soft:#1D3630; --on-primary:#0B1512;
+  --accent:#E9A43C; --accent-soft:#3A2F1B;
+  --blue:#6FA3DE; --blue-soft:#1F2E40;
+  --violet:#A98BD8; --violet-soft:#2E2540;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15.5px/1.62 "Public Sans",system-ui,sans-serif;padding:0 22px 60px}
+h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;margin:0;text-wrap:balance}
+.wrap{max-width:880px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;padding:34px 0 6px}
+header .logo{width:40px;height:40px;border-radius:11px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center;font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:.84rem;flex:none}
+header h1{font-size:1.4rem;font-weight:800}
+header .sub{font-size:.8rem;color:var(--muted)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 26px}
+.meta span{font-family:"Archivo",system-ui,sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line2);border-radius:999px;padding:3px 11px;background:var(--surface);color:var(--muted)}
+.part{font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:38px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow)}
+.card p{margin:0 0 13px;max-width:72ch}
+.card p:last-child{margin:0}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px;box-shadow:var(--shadow);border-left:4px solid var(--tc)}
+.tier .hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.tier .hd h3{font-size:1rem;font-weight:700;flex:1}
+.tier .who{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;color:var(--muted)}
+.tier ul{margin:6px 0 0;padding-left:19px}
+.tier li{margin:4px 0;max-width:70ch}
+.tier li::marker{color:var(--tc)}
+.tier .plus{font-family:"Archivo",system-ui,sans-serif;font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tc)}
+.full{border:2px solid var(--accent);border-left-width:2px}
+.badge{display:inline-block;font-family:"Archivo",system-ui,sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);border-radius:6px;padding:3px 9px}
+.cta{display:inline-block;background:var(--primary);color:var(--on-primary);font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;border-radius:10px;padding:11px 20px;margin-top:6px}
+.note{background:var(--blue-soft);border-radius:12px;padding:12px 16px;font-size:.86rem;margin-top:14px;max-width:100%}
+.note b{color:var(--blue)}
+.srcs{font-size:.72rem;color:var(--muted);margin-top:8px}
+.srcs a{color:var(--blue);text-decoration:none}
+.srcs a:hover{text-decoration:underline}
+.footnote{color:var(--muted);font-size:.74rem;margin-top:30px;text-align:center}
+a.back{color:var(--muted);font-size:.8rem;text-decoration:none}
+a.back:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="logo">C2K</div>
+  <div><h1>Phase 4 · Insight Dashboards</h1><div class="sub">Not sold separately. Included with your care plan · by Hashing AI</div></div>
+</header>
+<div class="meta"><span>Phase 4 of 4</span><span>No build fee, ever</span><span>Grows with each phase</span></div>
+
+<div class="part">The one phase money can't buy</div>
+<div class="card">
+  <p>Phases 1 through 3 are projects with a price. Phase 4 is different: the executive analytics suite is <b>never billed as a build</b>. It comes included with the monthly care plans, growing automatically as each phase adds its data.</p>
+  <p>The catch is honest and simple: dashboards can only show what the system captures. Each phase feeds new data in, so each phase unlocks new views, and the complete suite exists only when all three phases are live.</p>
+  <div class="note"><b>Market context:</b> a custom business-intelligence dashboard of this scope, pulling several data sources into interactive leadership views, is commonly quoted at $15,000 to $50,000 to build, and even a basic dashboard system carries $500 to $2,000 per month in ongoing support on top of that. C2K pays neither. The build fee is zero, and dashboard upkeep already sits inside a care plan that also covers hosting, backups, security, support, and monthly adjustments.
+  <div class="srcs">Sources: <a href="https://www.abbacustechnologies.com/business-intelligence-dashboard-development-cost/" target="_blank" rel="noopener">Abbacus Technologies, BI dashboard costs ($5k&ndash;15k basic, $15k&ndash;50k multi-source interactive, $500&ndash;2,000/mo support)</a> &middot; <a href="https://tabdelta.com/power-bi-dashboard-development-cost/" target="_blank" rel="noopener">Tabdelta, dashboard project pricing ($3k&ndash;20k mid-tier, $20k+ enterprise)</a></div></div>
+</div>
+
+<div class="part">What each stage unlocks</div>
+
+<div class="tier" style="--tc:var(--primary)">
+  <div class="hd"><h3>Starter dashboard</h3><span class="who">Phase 1 + care plan · $500/mo</span></div>
+  <ul>
+    <li>Live stock counts by stage and category, and what's sitting unshelved</li>
+    <li>Shelf aging: which items have been on the shelf longest</li>
+    <li>Sales and shipments over time, from the records staff create just by working</li>
+  </ul>
+</div>
+
+<div class="tier" style="--tc:var(--blue)">
+  <div class="hd"><h3><span class="plus">+ Phase 2</span> · Automation views</h3><span class="who">Phases 1 + 2 care plans · $1,000/mo</span></div>
+  <ul>
+    <li>Channel comparison: what sells where, and for how much</li>
+    <li>Time-to-sale per category and per channel</li>
+    <li>Listing throughput and staff minutes saved by AI drafting</li>
+  </ul>
+</div>
+
+<div class="tier" style="--tc:var(--violet)">
+  <div class="hd"><h3><span class="plus">+ Phase 3</span> · Store views</h3><span class="who">Phases 1 + 3 care plans · $850/mo</span></div>
+  <ul>
+    <li>C2K Store sales, traffic, and top categories</li>
+    <li>Fees saved versus eBay, running total for the mission</li>
+    <li>Store versus marketplace price comparison</li>
+  </ul>
+</div>
+
+<div class="tier full" style="--tc:var(--accent)">
+  <div class="hd"><h3>The complete executive suite</h3><span class="badge">All three phases only · bundle $1,100/mo</span></div>
+  <p style="margin:4px 0 8px;max-width:70ch">With every channel and every workflow feeding one record, the full leadership picture unlocks. This tier cannot be bought separately at any price, because the data for it only exists when Phases 1 through 3 are all live.</p>
+  <ul>
+    <li>Turn rate per item and per category: how fast donated devices become revenue</li>
+    <li>Aging alerts that flag slow movers before they become dead stock</li>
+    <li>Channel profitability after fees, side by side</li>
+    <li>Before-and-after story views, board-ready, like the live preview below</li>
+    <li>And the bundle itself saves $250 every month versus separate care plans</li>
+  </ul>
+</div>
+
+<div class="part">See it live</div>
+<div class="card">
+  <p>A working preview of the full executive suite, with sample data, is one click away. This is what C2K's leadership would open on a Monday morning.</p>
+  <a class="cta" href="https://c2k-p4-preview.vercel.app">Open the live dashboard preview</a>
+  <div class="note"><b>Why it matters now:</b> every view above is built from timestamps and records that Phase 1 starts capturing on day one. Data not captured cannot be reconstructed, which is why the analytics come free but the foundation comes first.</div>
+</div>
+
+<p style="margin-top:26px"><a class="back" href="index.html">← Back to all proposals</a></p>
+<p class="footnote">Prepared by Bill &amp; Wally · Hashing AI · September 2026</p>
+</div>
+</body>
+</html>
