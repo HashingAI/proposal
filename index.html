@@ -51,8 +51,9 @@ header .org span{display:block;font-size:.68rem;font-weight:600;letter-spacing:.
 @media(max-width:520px){header .org{border-left:0;padding-left:0}}
 
 .hero{padding:30px 0 4px}
-.hero h1{font-size:2.35rem;font-weight:800;line-height:1.12;max-width:17ch}
-@media(max-width:620px){.hero h1{font-size:1.85rem}}
+.hero h1{font-size:2.35rem;font-weight:800;line-height:1.12;white-space:nowrap}
+@media(max-width:760px){.hero h1{font-size:1.6rem}}
+@media(max-width:520px){.hero h1{font-size:1.25rem}}
 .hero .lede{color:var(--muted);font-size:1.02rem;max-width:66ch;margin:14px 0 0}
 .hero .lede b{color:var(--ink);font-weight:600}
 
@@ -68,11 +69,11 @@ header .org span{display:block;font-size:.68rem;font-weight:600;letter-spacing:.
 .sect-lede{color:var(--muted);max-width:68ch;margin:0 0 18px}
 
 .srcs{font-size:.71rem;color:var(--muted);margin-top:12px;line-height:1.6}
-@media(max-width:760px){.goals{grid-template-columns:1fr}}
-.goal{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:17px 20px;box-shadow:var(--shadow);display:flex;gap:13px}
-.goal .ic{width:32px;height:32px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--gs);color:var(--gc)}
+.goals{display:flex;flex-direction:column;gap:10px}
+.goal{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:15px 20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+.goal .ic{width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--gs);color:var(--gc);margin-top:1px}
 .goal .ic svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
-.goal b{font-family:"Archivo",system-ui,sans-serif;font-size:.94rem;display:block;margin-bottom:3px}
+.goal b{font-family:"Archivo",system-ui,sans-serif;font-size:.94rem;display:block;margin-bottom:2px}
 .goal p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.55}
 
 .flow{display:grid;grid-template-columns:1.4fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
@@ -153,7 +154,7 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
   </div>
 </div>
 
-<div class="sect">What changes on day one</div>
+<div class="sect">What the system changes</div>
 <div class="goals">
   <div class="goal" style="--gs:var(--primary-soft);--gc:var(--primary)">
     <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
@@ -161,15 +162,23 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
   </div>
   <div class="goal" style="--gs:var(--blue-soft);--gc:var(--blue)">
     <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
-    <div><b>Nothing lost, nothing sold twice</b><p>Every device has one permanent record and one known shelf. Scan-verified picking is designed to end wrong-unit shipments, and cross-channel sync closes the double-sale gap.</p></div>
+    <div><b>Nothing lost, nothing sold twice</b><p>Every device has one permanent record and one known shelf. Scan-verified picking ends wrong-unit shipments, and cross-channel sync closes the double-sale gap.</p></div>
   </div>
   <div class="goal" style="--gs:var(--accent-soft);--gc:var(--accent)">
     <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 18L10 11l4 4 6-8"/><path d="M14 7h6v6"/></svg></div>
-    <div><b>Faster turnover</b><p>Items that are findable and quick to list reach the market while they still hold value. Cutting the days between intake and listing is the single biggest lever on turn rate.</p></div>
+    <div><b>Faster turnover</b><p>Items that are findable and quick to list reach the market while they still hold value. Cutting the days between intake and listing is the single biggest lever on revenue.</p></div>
   </div>
   <div class="goal" style="--gs:var(--violet-soft);--gc:var(--violet)">
     <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-    <div><b>More revenue per staff hour</b><p>The same three-person team handling more units, on more channels, with a commission-free store keeping more of every sale for the mission.</p></div>
+    <div><b>More revenue per staff hour</b><p>The same team handles more units on more channels, with a commission-free store keeping more of every sale for the mission instead of eBay fees.</p></div>
+  </div>
+  <div class="goal" style="--gs:var(--primary-soft);--gc:var(--primary)">
+    <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+    <div><b>Full traceability on every device</b><p>Who donated it, who tested it, where it was shelved, when it sold, and who shipped it — a complete timestamped record per unit, permanently. Nothing to reconstruct after the fact.</p></div>
+  </div>
+  <div class="goal" style="--gs:var(--blue-soft);--gc:var(--blue)">
+    <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+    <div><b>Leadership visibility to set goals and act</b><p>Turn rate, aging inventory, channel profitability, and sales trends — all computed automatically from the same records staff create by working. Numbers to plan from, not spreadsheets to maintain.</p></div>
   </div>
 </div>
 
