@@ -67,14 +67,7 @@ header .org span{display:block;font-size:.68rem;font-weight:600;letter-spacing:.
 .sect{font-family:"Archivo",system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:52px 0 10px}
 .sect-lede{color:var(--muted);max-width:68ch;margin:0 0 18px}
 
-.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:860px){.pillars{grid-template-columns:repeat(2,1fr)}}
-.pil{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--pc);border-radius:13px;padding:15px 16px;box-shadow:var(--shadow)}
-.pil b{font-family:"Archivo",system-ui,sans-serif;font-size:.9rem;display:block;margin-bottom:4px}
-.pil span{font-size:.8rem;color:var(--muted);line-height:1.5;display:block}
-.plus{text-align:center;font-family:"Archivo",system-ui,sans-serif;color:var(--muted);font-size:.78rem;letter-spacing:.06em;margin:14px 0 0}
-
-.goals{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.srcs{font-size:.71rem;color:var(--muted);margin-top:12px;line-height:1.6}
 @media(max-width:760px){.goals{grid-template-columns:1fr}}
 .goal{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:17px 20px;box-shadow:var(--shadow);display:flex;gap:13px}
 .goal .ic{width:32px;height:32px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--gs);color:var(--gc)}
@@ -103,19 +96,8 @@ td .whenc{display:block;font-size:.76rem;color:var(--muted);margin-top:2px}
 tr.sum td{background:var(--primary-soft);font-weight:700;border-bottom:0}
 tr.sum td .whenc{color:var(--muted);font-weight:400}
 .free{font-family:"Archivo",system-ui,sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);border-radius:5px;padding:2px 8px}
+.mkt-range{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8rem;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2);white-space:nowrap}
 
-.mkt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-@media(max-width:760px){.mkt{grid-template-columns:1fr}}
-.mktcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow)}
-.mktcard.hl{border:2px solid var(--primary)}
-.mktcard h3{font-size:.8rem;font-family:"Archivo",system-ui,sans-serif;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.mktcard.hl h3{color:var(--primary)}
-.mrow{display:flex;justify-content:space-between;gap:14px;font-size:.85rem;padding:5px 0;color:var(--muted)}
-.mrow span:last-child{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--ink);white-space:nowrap}
-.mtot{display:flex;justify-content:space-between;gap:14px;align-items:baseline;border-top:1px solid var(--line);margin-top:9px;padding-top:11px}
-.mtot b{font-family:"Archivo",system-ui,sans-serif;font-size:.88rem}
-.mtot .big{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.32rem}
-.mktcard.hl .mtot .big{color:var(--primary)}
 .srcs{font-size:.71rem;color:var(--muted);margin-top:12px;line-height:1.6}
 .srcs a{color:var(--blue);text-decoration:none}
 .srcs a:hover{text-decoration:underline}
@@ -151,7 +133,7 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
 
 <div class="hero">
   <h1>One system for the entire resale operation.</h1>
-  <p class="lede">From the moment a donated device arrives to the moment leadership reads the numbers: <b>inventory control, AI listing automation, C2K's own storefront, and executive analytics</b>, built as one connected system over four phases.</p>
+  <p class="lede">From donated device to sale to leadership dashboard — one connected system, four phases, built to stay.</p>
   <div class="stats">
     <div class="stat">
       <div class="k">Total build, all phases</div>
@@ -171,18 +153,7 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
   </div>
 </div>
 
-<div class="sect">What C2K ends up owning</div>
-<p class="sect-lede">Four capabilities that most organizations buy as four separate products from four separate vendors, built here as one system on one record per device.</p>
-<div class="pillars">
-  <div class="pil" style="--pc:var(--primary)"><b>Inventory control</b><span>Every unit tracked by ID, barcode, shelf, and test result, from intake to shipment.</span></div>
-  <div class="pil" style="--pc:var(--blue)"><b>AI automation</b><span>Listings drafted from data staff already captured, published everywhere in one click.</span></div>
-  <div class="pil" style="--pc:var(--accent)"><b>Own storefront</b><span>A branded C2K store where the full sale price funds the mission, not marketplace fees.</span></div>
-  <div class="pil" style="--pc:var(--violet)"><b>Business analytics</b><span>Turn rate, aging, and channel profitability, computed from the same records automatically.</span></div>
-</div>
-<p class="plus">All four running on one shared record per device. Nothing entered twice, ever.</p>
-
-<div class="sect">What it is meant to change</div>
-<p class="sect-lede">The system exists to serve four operating goals. Each phase is sequenced to move these in the right direction, and Phase 4 exists so C2K can actually see whether they moved.</p>
+<div class="sect">What changes on day one</div>
 <div class="goals">
   <div class="goal" style="--gs:var(--primary-soft);--gc:var(--primary)">
     <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
@@ -225,48 +196,34 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
 
 <div class="sect">Investment at a glance</div>
 <div class="tblwrap"><div class="inner"><table>
-  <tr><th>Phase</th><th class="num">One-time</th><th class="num">Monthly care</th></tr>
+  <tr><th>Phase</th><th class="num">Market rate</th><th class="num">C2K price</th><th class="num">Monthly care</th></tr>
   <tr>
     <td><span class="ph">Phase 1 &middot; Inventory System</span><span class="whenc">Start here &middot; the foundation everything else reads from</span></td>
+    <td class="num"><span class="mkt-range">$35K&ndash;70K</span></td>
     <td class="num">$15,000</td><td class="num">$500</td>
   </tr>
   <tr>
     <td><span class="ph">Phase 3 &middot; The C2K Store</span><span class="whenc">In parallel with Phase 1, launches at the same go-live</span></td>
+    <td class="num"><span class="mkt-range">$5K&ndash;40K</span></td>
     <td class="num">$6,000</td><td class="num">+$350</td>
   </tr>
   <tr>
     <td><span class="ph">Phase 2 &middot; Listing Automation</span><span class="whenc">After Phase 1 is live and in daily use</span></td>
+    <td class="num"><span class="mkt-range">$15K&ndash;30K</span></td>
     <td class="num">$16,000</td><td class="num">+$500</td>
   </tr>
   <tr>
     <td><span class="ph">Phase 4 &middot; Insight Dashboards</span><span class="whenc">Grows automatically as each phase adds its data</span></td>
+    <td class="num"><span class="mkt-range">$15K&ndash;50K</span></td>
     <td class="num"><span class="free">No build fee</span></td><td class="num"><span class="free">Included</span></td>
   </tr>
   <tr class="sum">
     <td>All three phases, bundled<span class="whenc">Care plans combined, versus $1,350 taken separately</span></td>
+    <td class="num"><span class="mkt-range">$70K&ndash;190K</span></td>
     <td class="num">$37,000</td><td class="num">$1,100</td>
   </tr>
 </table></div></div>
-
-<div class="mkt">
-  <div class="mktcard">
-    <h3>Bought separately at market rates</h3>
-    <div class="mrow"><span>Custom inventory system</span><span>$35K &ndash; 70K</span></div>
-    <div class="mrow"><span>Marketplace integration &amp; automation</span><span>$15K &ndash; 30K</span></div>
-    <div class="mrow"><span>Custom storefront</span><span>$5K &ndash; 40K</span></div>
-    <div class="mrow"><span>Executive analytics layer</span><span>$15K &ndash; 50K</span></div>
-    <div class="mtot"><b>Typical market total</b><span class="big">$70K &ndash; 190K</span></div>
-  </div>
-  <div class="mktcard hl">
-    <h3>C2K community partner price</h3>
-    <div class="mrow"><span>Phase 1 &middot; Inventory System</span><span>$15,000</span></div>
-    <div class="mrow"><span>Phase 2 &middot; Listing Automation</span><span>$16,000</span></div>
-    <div class="mrow"><span>Phase 3 &middot; The C2K Store</span><span>$6,000</span></div>
-    <div class="mrow"><span>Phase 4 &middot; Analytics suite</span><span>Included</span></div>
-    <div class="mtot"><b>All four phases</b><span class="big">$37,000</span></div>
-  </div>
-</div>
-<div class="srcs">Market ranges from published industry pricing guides: <a href="https://www.raftlabs.com/blog/inventory-management-software-cost" target="_blank" rel="noopener">RaftLabs, inventory software</a> &middot; <a href="https://www.netguru.com/blog/api-integration-cost" target="_blank" rel="noopener">Netguru, API integration</a> &middot; <a href="https://elogic.co/blog/ecommerce-development-cost" target="_blank" rel="noopener">Elogic, ecommerce builds</a> &middot; <a href="https://www.abbacustechnologies.com/business-intelligence-dashboard-development-cost/" target="_blank" rel="noopener">Abbacus, BI dashboards</a>. Each phase proposal shows its own hour-by-hour estimate and the rate it is priced at.</div>
+<div class="srcs">Market ranges from published industry pricing guides: <a href="https://www.raftlabs.com/blog/inventory-management-software-cost" target="_blank" rel="noopener">RaftLabs</a> &middot; <a href="https://www.netguru.com/blog/api-integration-cost" target="_blank" rel="noopener">Netguru</a> &middot; <a href="https://elogic.co/blog/ecommerce-development-cost" target="_blank" rel="noopener">Elogic</a> &middot; <a href="https://www.abbacustechnologies.com/business-intelligence-dashboard-development-cost/" target="_blank" rel="noopener">Abbacus</a></div>
 
 <div class="sect">The four phases in detail</div>
 <p class="sect-lede">Each proposal below is a complete document: scope, timeline, hour estimates, market context, and terms. Open any one to read it in full.</p>
