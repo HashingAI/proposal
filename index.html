@@ -103,6 +103,19 @@ td.c2k-price{text-align:right;font-family:"IBM Plex Mono",ui-monospace,monospace
 
 .srcs{font-size:.71rem;color:var(--muted);margin-top:12px;line-height:1.6}
 .srcs a{color:var(--blue);text-decoration:none}
+
+.bundle-offer{background:var(--primary-soft);border:2px solid var(--primary);border-radius:16px;padding:20px 26px;margin-top:14px}
+.bundle-label{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:.95rem;color:var(--primary);margin-bottom:6px}
+.bundle-desc{margin:0 0 16px;font-size:.88rem;color:var(--muted);max-width:68ch}
+.bundle-prices{display:flex;align-items:center;flex-wrap:wrap}
+.bundle-price-item{padding:0 24px 0 0}
+.bundle-price-label{font-family:"Archivo",system-ui,sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.bundle-price-val{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1.4rem;color:var(--primary)}
+.bundle-price-val small{font-size:.85rem;font-weight:600;color:var(--muted)}
+.bundle-was{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.75rem;font-weight:400;color:#b91c1c;text-decoration:line-through;text-decoration-color:#fca5a5;margin-left:4px;vertical-align:middle}
+.bundle-save{color:var(--accent)}
+.bundle-divider{width:1px;height:40px;background:var(--line2);margin:0 24px 0 0;flex:none}
+@media(max-width:620px){.bundle-prices{flex-direction:column;gap:12px}.bundle-divider{display:none}.bundle-price-item{padding:0}}
 .srcs a:hover{text-decoration:underline}
 
 .phases{display:grid;gap:12px}
@@ -227,13 +240,28 @@ a.pcard:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
     <td class="num"><span class="mkt-range">$15,000&ndash;$50,000</span></td>
     <td class="c2k-price"><span class="free">FREE</span></td><td class="num"><span class="free">FREE</span></td>
   </tr>
-  <tr class="sum">
-    <td>Bundle all three phases &mdash; save $2,000<span class="whenc">Sign Phases 1, 2 &amp; 3 together · Phase 4 analytics suite included at no build fee</span></td>
-    <td class="num"><span class="mkt-range">$75,000&ndash;$190,000</span></td>
-    <td class="c2k-price"><span class="mkt-range" style="font-size:.78rem">$37,000</span><br>$35,000</td>
-    <td class="num"><span class="mkt-range" style="font-size:.78rem">$1,350</span><br>$1,000</td>
-  </tr>
 </table></div></div>
+
+<div class="bundle-offer">
+  <div class="bundle-label">✦ Sign all three phases together</div>
+  <p class="bundle-desc">Commit to Phases 1, 2 &amp; 3 at once and receive a discount on both the build and the monthly care. Phase 4 executive analytics suite included at no additional build fee.</p>
+  <div class="bundle-prices">
+    <div class="bundle-price-item">
+      <div class="bundle-price-label">Total build</div>
+      <div class="bundle-price-val">$35,000 <span class="bundle-was">was $37,000</span></div>
+    </div>
+    <div class="bundle-divider"></div>
+    <div class="bundle-price-item">
+      <div class="bundle-price-label">Monthly care</div>
+      <div class="bundle-price-val">$1,000<small>/mo</small> <span class="bundle-was">was $1,350</span></div>
+    </div>
+    <div class="bundle-divider"></div>
+    <div class="bundle-price-item">
+      <div class="bundle-price-label">You save</div>
+      <div class="bundle-price-val bundle-save">$2,000 + $350/mo</div>
+    </div>
+  </div>
+</div>
 <div class="srcs">Market ranges from published industry pricing guides: <a href="https://www.raftlabs.com/blog/inventory-management-software-cost" target="_blank" rel="noopener">RaftLabs</a> &middot; <a href="https://www.netguru.com/blog/api-integration-cost" target="_blank" rel="noopener">Netguru</a> &middot; <a href="https://elogic.co/blog/ecommerce-development-cost" target="_blank" rel="noopener">Elogic</a> &middot; <a href="https://www.abbacustechnologies.com/business-intelligence-dashboard-development-cost/" target="_blank" rel="noopener">Abbacus</a></div>
 
 <div class="sect">The four phases in detail</div>
